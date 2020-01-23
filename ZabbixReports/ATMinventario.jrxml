@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PDVinventario" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ZabbixDataSource"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="zabbixNetworkMatriz"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -43,16 +43,17 @@
     "baseUrl" : "api_jsonrpc.php"
   },
   "headersMap" : { },
-  "queryData" : "{\r\n\t\"jsonrpc\":\"2.0\",\r\n\t\"method\":\"problem.get\",\r\n\t\"params\":{\r\n\t\t\"groupids\":\"2242\",\r\n\t\t\"time_from\": \"86400\",\r\n\t\t   \t\"output\": [\r\n\t\t\t\"name\", \r\n\t\t\t\"clock\", \r\n\t\t\t\"r_clock\", \r\n\t\t\t\"ns\", \r\n\t\t\t\"r_ns\"\r\n\t\t],\r\n    \t\"selectAcknowledges\": [\r\n\t\t\t\"message\", \r\n\t\t\t\"clock\"\r\n\t\t],\r\n    \t\"recent\": \"true\",\r\n    \t\"sortfield\": [\"eventid\"],\r\n    \t\"sortorder\": \"DESC\"\r\n\t},\r\n\t\"id\":2,\r\n\t\"auth\":\"e8270b1945c04f2946adb4d27787d524\"\r\n}",
+  "queryData" : "{\r\n\t\"jsonrpc\":\"2.0\",\r\n\t\"method\":\"problem.get\",\r\n\t\"params\":{\r\n\t\t\"groupids\":\"2211\",\r\n\t\t\"acknowledged\": \"true\",\r\n    \t\"output\": [\r\n\t\t\t\"name\", \r\n\t\t\t\"clock\", \r\n\t\t\t\"r_clock\", \r\n\t\t\t\"ns\", \r\n\t\t\t\"r_ns\"\r\n\t\t],\r\n    \t\"selectAcknowledges\": [\r\n\t\t\t\"message\", \r\n\t\t\t\"clock\"\r\n\t\t],\r\n    \t\"recent\": \"true\",\r\n    \t\"sortfield\": [\"eventid\"],\r\n    \t\"sortorder\": \"DESC\"\r\n\t},\r\n\t\"id\":2,\r\n\t\"auth\":\"e8270b1945c04f2946adb4d27787d524\"\r\n}",
   "GETParameters" : { }
 }]]>
 	</queryString>
 	<field name="name" class="java.lang.String"/>
 	<field name="clock_inicio" class="java.lang.Long"/>
-	<field name="r_clock_fim" class="java.lang.Long"/>
-	<field name="ns_inicio" class="java.lang.Long"/>
-	<field name="r_ns_fim" class="java.lang.Long"/>
+	<field name="r_clock_fim" class="java.lang.String"/>
+	<field name="ns_inicio" class="java.lang.String"/>
+	<field name="r_ns_fim" class="java.lang.String"/>
 	<field name="message_reconhecimento" class="java.lang.String"/>
+	<field name="clock_hora_reconhecimento" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -63,7 +64,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["C:/Users/4010225/JaspersoftWorkspace/ZabbixReports/zabbix-logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["zabbix-logo.png"]]></imageExpression>
 			</image>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="730" height="66" backcolor="#000000" uuid="d8d9e644-3a32-491d-97cb-a277aff17133"/>
@@ -72,11 +73,11 @@
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Ocorrencia em PDVs SP]]></text>
+					<text><![CDATA[Inventário de ATMs]]></text>
 				</staticText>
 				<image>
 					<reportElement x="10" y="8" width="220" height="50" uuid="177a0f6d-5506-4605-ae76-cb6e19d25210"/>
-					<imageExpression><![CDATA["C:/Users/4010225/JaspersoftWorkspace/ZabbixReports/riachuelo_logo.png"]]></imageExpression>
+					<imageExpression><![CDATA["riachuelo_logo.png"]]></imageExpression>
 				</image>
 			</frame>
 			<frame>
@@ -95,9 +96,9 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="210" height="18" forecolor="#000000" uuid="ad115de3-d4dc-4cbe-bdad-a1abd4082e79">
+				<reportElement style="Column header" x="0" y="0" width="80" height="18" forecolor="#000000" uuid="ad115de3-d4dc-4cbe-bdad-a1abd4082e79">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1c962e0-21ca-4a91-8ac1-438fe45e8e8a"/>
 				</reportElement>
 				<textElement>
@@ -106,22 +107,58 @@
 				<text><![CDATA[Equipamento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="216" y="2" width="134" height="18" forecolor="#000000" uuid="37cf2baa-3648-4513-9841-47539eeb453f">
+				<reportElement style="Column header" x="90" y="1" width="70" height="18" forecolor="#000000" uuid="37cf2baa-3648-4513-9841-47539eeb453f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a69a1bc7-e5fe-41cf-bc44-6755f23e4573"/>
 				</reportElement>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Inicio HR]]></text>
+				<text><![CDATA[ip]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="358" y="1" width="294" height="18" forecolor="#000000" uuid="b5ab5e4f-ddfa-42fe-83b3-d478be8d0b41">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1c962e0-21ca-4a91-8ac1-438fe45e8e8a"/>
+				<reportElement style="Column header" x="170" y="0" width="80" height="18" forecolor="#000000" uuid="c656f03a-5357-4a7a-b2bf-433edd95d5d9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="365f4cb9-fdef-47a8-aeec-6c65265ab85a"/>
 				</reportElement>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Mensagem de Ack]]></text>
+				<text><![CDATA[Memória Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="259" y="0" width="40" height="18" forecolor="#000000" uuid="6c68196f-7b29-4be3-91c4-65ae385e5de2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af7fd1fe-a6d8-4207-b944-9a99c9d95e5a"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPUs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="377" y="0" width="113" height="18" forecolor="#000000" uuid="038dd840-6726-44dd-bc22-4f112f837685">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8fa3c3a8-790e-4933-bc17-389c6fe8c6da"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MAC Interface]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="499" y="0" width="298" height="18" forecolor="#000000" uuid="3d77f7b8-309b-40aa-ab4b-2568c4a38960">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8fa3c3a8-790e-4933-bc17-389c6fe8c6da"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Operacional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="309" y="0" width="60" height="18" forecolor="#000000" uuid="011c6009-42ff-4b08-958d-e82652d2c938">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af7fd1fe-a6d8-4207-b944-9a99c9d95e5a"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Disco]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -130,7 +167,7 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="210" height="18" uuid="2a1898e7-56c8-499f-a0b5-2c5aea964b87">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="80" height="18" uuid="2a1898e7-56c8-499f-a0b5-2c5aea964b87">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1c962e0-21ca-4a91-8ac1-438fe45e8e8a"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle">
@@ -139,22 +176,13 @@
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" evaluationTime="Auto">
-					<reportElement style="Detail" positionType="Float" x="216" y="1" width="134" height="18" uuid="9f0c6732-1e85-4667-8ca2-4cd04e614cdb">
+					<reportElement style="Detail" positionType="Float" x="90" y="0" width="80" height="18" uuid="9f0c6732-1e85-4667-8ca2-4cd04e614cdb">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1c962e0-21ca-4a91-8ac1-438fe45e8e8a"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle">
 						<font size="10"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date($F{clock_inicio}*1000L).toString()]]></textFieldExpression>
-				</textField>
-				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="358" y="1" width="294" height="18" uuid="a862f4be-54b8-4b24-bf9b-b498c954e331">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1c962e0-21ca-4a91-8ac1-438fe45e8e8a"/>
-					</reportElement>
-					<textElement verticalAlignment="Middle">
-						<font size="10"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{message_reconhecimento} == "" ? $F{message_reconhecimento} : "Sem Reconhecimento"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clock_inicio}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
